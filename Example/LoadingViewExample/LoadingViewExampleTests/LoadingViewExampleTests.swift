@@ -10,24 +10,27 @@ import XCTest
 
 class LoadingViewExampleTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    var tasks: [Task]?
+
+    override func setUp() {
+        tasks = [
+            Task(0),
+            Task(1).then(Task(2)).then(Task(3)),
+            Task(4).then(Task(5))
+        ]
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    override func tearDown() {
+        tasks = nil
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testTasksCount() throws {
+        guard let tasks = self.tasks else {
+            XCTFail("Tasks are invalid")
+            return
         }
-    }
 
+        XCTAssertNotNil(self.tasks, "Tasks should be valid")
+        XCTAssertEqual(tasks.count, 3, "Tasks should be 3")
+    }
 }

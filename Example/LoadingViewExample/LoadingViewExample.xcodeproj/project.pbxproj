@@ -16,6 +16,9 @@
 		56853FAD2578E49C00CB18F9 /* LoadingViewExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56853FAC2578E49C00CB18F9 /* LoadingViewExampleTests.swift */; };
 		56853FB82578E49C00CB18F9 /* LoadingViewExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56853FB72578E49C00CB18F9 /* LoadingViewExampleUITests.swift */; };
 		56853FC92578E4F000CB18F9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56853FC82578E4EF00CB18F9 /* LoadingView.swift */; };
+		56E0687525798B8700E54FD3 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E0687425798B8700E54FD3 /* Task.swift */; };
+		56E0687A2579922E00E54FD3 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E068792579922E00E54FD3 /* TasksView.swift */; };
+		56E0687E2579983400E54FD3 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E0687425798B8700E54FD3 /* Task.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +53,9 @@
 		56853FB32578E49C00CB18F9 /* LoadingViewExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoadingViewExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56853FB72578E49C00CB18F9 /* LoadingViewExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewExampleUITests.swift; sourceTree = "<group>"; };
 		56853FB92578E49C00CB18F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		56853FC82578E4EF00CB18F9 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoadingView.swift; path = ../../../LoadingViewDemo/Sources/Classes/LoadingView.swift; sourceTree = "<group>"; };
+		56853FC82578E4EF00CB18F9 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		56E0687425798B8700E54FD3 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Task.swift; path = Tasks/Task.swift; sourceTree = "<group>"; };
+		56E068792579922E00E54FD3 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +106,11 @@
 		56853F942578E48E00CB18F9 /* LoadingViewExample */ = {
 			isa = PBXGroup;
 			children = (
-				56853F952578E48E00CB18F9 /* AppDelegate.swift */,
-				56853F972578E48E00CB18F9 /* SceneDelegate.swift */,
-				56853F992578E48E00CB18F9 /* ContentView.swift */,
-				56853FC82578E4EF00CB18F9 /* LoadingView.swift */,
-				56853F9B2578E49A00CB18F9 /* Assets.xcassets */,
+				56E0686B25798A8500E54FD3 /* App */,
+				56E0687025798AAD00E54FD3 /* Classes */,
+				56E0686F25798AA300E54FD3 /* Assets */,
 				56853FA02578E49A00CB18F9 /* LaunchScreen.storyboard */,
 				56853FA32578E49A00CB18F9 /* Info.plist */,
-				56853F9D2578E49A00CB18F9 /* Preview Content */,
 			);
 			path = LoadingViewExample;
 			sourceTree = "<group>";
@@ -137,6 +139,35 @@
 				56853FB92578E49C00CB18F9 /* Info.plist */,
 			);
 			path = LoadingViewExampleUITests;
+			sourceTree = "<group>";
+		};
+		56E0686B25798A8500E54FD3 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				56853F952578E48E00CB18F9 /* AppDelegate.swift */,
+				56853F972578E48E00CB18F9 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		56E0686F25798AA300E54FD3 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				56853F9B2578E49A00CB18F9 /* Assets.xcassets */,
+				56853F9D2578E49A00CB18F9 /* Preview Content */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		56E0687025798AAD00E54FD3 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				56853F992578E48E00CB18F9 /* ContentView.swift */,
+				56E068792579922E00E54FD3 /* TasksView.swift */,
+				56853FC82578E4EF00CB18F9 /* LoadingView.swift */,
+				56E0687425798B8700E54FD3 /* Task.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,7 +301,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				56853F962578E48E00CB18F9 /* AppDelegate.swift in Sources */,
+				56E0687A2579922E00E54FD3 /* TasksView.swift in Sources */,
 				56853FC92578E4F000CB18F9 /* LoadingView.swift in Sources */,
+				56E0687525798B8700E54FD3 /* Task.swift in Sources */,
 				56853F982578E48E00CB18F9 /* SceneDelegate.swift in Sources */,
 				56853F9A2578E48E00CB18F9 /* ContentView.swift in Sources */,
 			);
@@ -280,6 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56E0687E2579983400E54FD3 /* Task.swift in Sources */,
 				56853FAD2578E49C00CB18F9 /* LoadingViewExampleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,7 +475,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"LoadingViewExample/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"LoadingViewExample/Assets/Preview Content\"";
 				DEVELOPMENT_TEAM = NEHEF8LFFZ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = LoadingViewExample/Info.plist;
@@ -462,7 +496,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"LoadingViewExample/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"LoadingViewExample/Assets/Preview Content\"";
 				DEVELOPMENT_TEAM = NEHEF8LFFZ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = LoadingViewExample/Info.plist;

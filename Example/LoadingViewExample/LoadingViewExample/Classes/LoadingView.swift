@@ -36,6 +36,9 @@ struct LoadingView<Content>: View where Content: View {
                 VStack {
                     Text("Loading...")
                     ActivityIndicator(isAnimating: .constant(true), style: .large)
+                    Button("Done") {
+                        self.isShowing = false
+                    }
                 }
                 .frame(width: geometry.size.width / 2,
                        height: geometry.size.height / 5)
@@ -43,14 +46,7 @@ struct LoadingView<Content>: View where Content: View {
                 .foregroundColor(Color.primary)
                 .cornerRadius(20)
                 .opacity(self.isShowing ? 1 : 0)
-
             }
         }
     }
 }
-//
-//struct LoadingView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LoadingView<<#Content: View#>>()
-//    }
-//}

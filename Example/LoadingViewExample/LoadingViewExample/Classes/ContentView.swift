@@ -8,13 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showTasks = false
 
     var body: some View {
-        LoadingView(isShowing: .constant(true)) {
-            NavigationView {
-                List(["1", "2", "3", "4", "5"], id: \.self) { row in
-                    Text(row)
-                }.navigationBarTitle(Text("Task List"), displayMode: .large)
+        VStack {
+            Button(action: {
+                self.showTasks.toggle()
+            }) {
+                Text("Show Tasks")
+            }
+
+            if showTasks {
+                TasksView()
             }
         }
     }
