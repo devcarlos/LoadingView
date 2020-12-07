@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 enum TaskStatus: Int {
     case fail = 0
@@ -139,28 +140,70 @@ extension TaskList {
         }
         return failed
     }
+
+    public func values() -> [String] {
+        var values: [String] = []
+        var node = head
+        while node != nil {
+            guard let task = node else {
+                continue
+            }
+
+            values.append("\(task.value)")
+            node = node!.next
+        }
+        return values
+    }
 }
 
+class TaskData: ObservableObject {
 
-//
-//let dogBreeds = TaskList<String>()
-//dogBreeds.append(value: "Labrador")
-//dogBreeds.append(value: "Bulldog")
-//dogBreeds.append(value: "Beagle")
-//dogBreeds.append(value: "Husky")
-//
-//print("DOGS \(dogBreeds)")
-//print(dogBreeds)
-//dogBreeds.runTasks()
-//let dogFailed = dogBreeds.failed()
-//print("FAILED DOGS \(dogFailed)")
-//
-//let numbers = TaskList<Int>()
-//numbers.append(value: 5)
-//numbers.append(value: 10)
-//numbers.append(value: 15)
-//
-//print("NUMBERS \(numbers)")
-//numbers.runTasks()
-//let numbersFailed = numbers.failed()
-//print("FAILED NUMS \(numbersFailed)")
+    public let objectWillChange = PassthroughSubject<[TaskList<Int>], Never>()
+
+    public private(set) var tasks: [TaskList<Int>] = [] {
+        willSet {
+            objectWillChange.send(newValue)
+        }
+    }
+
+    init() {
+        self.tasks = []
+    }
+
+    public func load() {
+        let task1: TaskList<Int> = TaskList<Int>()
+        task1.append(value: 1)
+        task1.append(value: 2)
+        task1.append(value: 3)
+        task1.append(value: 4)
+        task1.append(value: 5)
+
+        let task2: TaskList<Int> = TaskList<Int>()
+        task2.append(value: 6)
+
+        let task3: TaskList<Int> = TaskList<Int>()
+        task3.append(value: 7)
+        task3.append(value: 8)
+        task3.append(value: 9)
+        task3.append(value: 10)
+
+        tasks.append(task1)
+        tasks.append(task2)
+        tasks.append(task3)
+    }
+
+    func values() -> [String] {
+        var result: [String] = []
+        tasks.forEach {
+
+            result.append(contentsOf: $0.values())
+        }
+
+        return result
+    }
+
+    func toString() -> String {
+        let values = self.values()
+        return values.joined(separator: ",")
+    }
+}

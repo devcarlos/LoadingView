@@ -8,21 +8,20 @@
 import SwiftUI
 
 struct TasksView: View {
-    let tasks = [
-        Task(0),
-        Task(1).then(Task(2)).then(Task(3)),
-        Task(4).then(Task(5))
-    ]
-
     @State private var showing = false
+    @ObservedObject var taskData: TaskData = TaskData()
 
     var body: some View {
         VStack {
-            LoadingView(isShowing: $showing) {
+            LoadingView(isShowing: $showing, tasks: taskData.tasks) {
                 NavigationView {
-                    List(["1", "2", "3", "4", "5"], id: \.self) { row in
-                        Text(row)
-                    }.navigationBarTitle(Text("Task List"), displayMode: .large)
+                    List {
+                        ForEach(self.taskData.values(), id: \.self) { task in
+                            Text(task)
+                        }
+                    }
+                    .onAppear(perform: { self.taskData.load() })
+                    .navigationBarTitle(Text("Task List"), displayMode: .large)
                 }
             }
 

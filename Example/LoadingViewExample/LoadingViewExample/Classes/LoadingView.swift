@@ -24,6 +24,15 @@ struct ActivityIndicator: UIViewRepresentable {
 struct LoadingView<Content>: View where Content: View {
 
     @Binding var isShowing: Bool
+    var tasks: [TaskList<Int>] {
+        didSet {
+            if self.isShowing {
+                self.tasks.forEach {
+                    $0.runTasks()
+                }
+            }
+        }
+    }
     var content: () -> Content
 
     var body: some View {
@@ -34,7 +43,7 @@ struct LoadingView<Content>: View where Content: View {
                     .blur(radius: self.isShowing ? 3 : 0)
 
                 VStack {
-                    Text("Loading...")
+                    Text("Loading Tasks...")
                     ActivityIndicator(isAnimating: .constant(true), style: .large)
                     Button("Done") {
                         self.isShowing = false
